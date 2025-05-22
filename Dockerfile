@@ -8,10 +8,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip
-RUN pip install poetry
-RUN poetry config virtualenvs.create false
-
-COPY pyproject.toml poetry.lock ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 RUN poetry install --no-root
 
@@ -21,4 +18,4 @@ RUN mkdir -p /app/staticfiles && chmod -R 755 /app/staticfiles
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "python manage.py collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8000 --timeout 120"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

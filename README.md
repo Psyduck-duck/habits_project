@@ -25,25 +25,25 @@ sudo ufw allow 22/tcp
 
 1. Clone the repository:
 ```commandline
-git clone https://github.com/obladishka/habits_api.git
+git clone https://github.com/Psyduck-duck/habits_project.git
 ```
 2. Go to project directory and set up env variables according to .env.sample:
 ```commandline
-cd habits_api/
+cd habits_project/
 nano .env
 ```
 3. Start the container:
 ```commandline
 docker-compose up
 ```
-4. Congratulations! The project is set up successfully! To enjoy all the features go to http://158.160.177.36/habits
+4. Congratulations! The project is set up successfully! To enjoy all the features go to http://158.160.181.9/habits
 and create a user account.
 
 ## Automatic deployment
 
 1. Clone the repository to your project and make some amendments:
 ```commandline
-git clone https://github.com/obladishka/habits_api.git
+git clone https://github.com/Psyduck-duck/habits_project.git
 ```
 2. Create a new git repository and add all necessary environmental variables to secrets.
 3. Push your project to the repository. GitHUB Actions will automatically test your project and deploy it to server if everything is correct.
@@ -52,6 +52,6 @@ git clone https://github.com/obladishka/habits_api.git
 
 After starting the container, access the API documentation at:
 
-Swagger UI: http://158.160.172.16/api/schema/
-Redoc UI: http://158.160.172.16/api/docs/
+Swagger UI: http://158.160.181.9/api/schema/
+Redoc UI: http://158.160.181.9/api/docs/
 ```
