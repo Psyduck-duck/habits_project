@@ -110,5 +110,5 @@ jobs:
           docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/habits_project:${{ github.sha }}
           docker stop habits_project || true
           docker rm habits_project || true
-          docker run -d --name habits_api --env-file .env -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/habits_project:${{ github.sha }}
+          docker run -d --name habits_project --env-file .env -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/habits_project:${{ github.sha }}
           EOF
