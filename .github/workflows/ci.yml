@@ -114,7 +114,7 @@ jobs:
 #          docker run -d --name habits_project --env-file .env -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/habits_project:${{ github.sha }}
 #          EOF
         run: |
-          cd /home/habits_project/habits_project
+          cd /habits_project
           git fetch
           git switch develop
           git merge origin/develop
