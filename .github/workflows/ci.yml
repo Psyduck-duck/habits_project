@@ -105,11 +105,17 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: Deploy to Server
+#        run: |
+#          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+#          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/habits_project:${{ github.sha }}
+#          docker stop habits_project || true
+#          docker rm habits_project || true
+#          cd /home/test2/habits_project && \
+#          docker run -d --name habits_project --env-file .env -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/habits_project:${{ github.sha }}
+#          EOF
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/habits_project:${{ github.sha }}
-          docker stop habits_project || true
-          docker rm habits_project || true
-          cd /home/test2/habits_project && \
-          docker run -d --name habits_project --env-file .env -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/habits_project:${{ github.sha }}
-          EOF
+          cd /home/habits_project/habits_project
+          git fetch
+          git switch develop
+          git merge origin/develop
+          docker compose up --build --force-recreate -d
