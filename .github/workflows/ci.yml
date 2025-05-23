@@ -106,9 +106,9 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/habits_project:${{ github.sha }}
+          ssh -o StrictHostKeyChecking=no user@server << 'EOF'
+          docker pull ***/habits_project:d0cc3bbea45bef19fc229d691415eed2484cd80e
           docker stop habits_project || true
           docker rm habits_project || true
-          docker run -d --name habits_project --env-file .env -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/habits_project:${{ github.sha }}
+          docker run -d --name habits_project --env-file .env -p 80:8000 ***/habits_project:d0cc3bbea45bef19fc229d691415eed2484cd80e
           EOF
